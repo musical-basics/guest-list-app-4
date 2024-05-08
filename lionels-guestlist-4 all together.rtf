@@ -1,10 +1,10 @@
+uploadEvents.js
 import { createClient } from '@sanity/client';
 import { extractRawText } from 'mammoth';
 import fs from 'fs';
 import mammoth from 'mammoth';
 
 // Initialize Sanity client
-
 const client = createClient({
   projectId: '6whyi5be',
   dataset: 'production',
@@ -132,3 +132,204 @@ function formatDate(date) {
 const filePath = 'Guestlist Rules w-e 5-8-24.docx';
 const startDate = new Date('2024-05-02'); // Thursday, May 2, 2024
 createEventsFromDocument(filePath, startDate);
+
+artist.js
+export default {
+    name: 'artist',
+    title: 'Artist',
+    type: 'document',
+    fields: [
+      {
+        name: 'name',
+        title: 'Name',
+        type: 'string',
+        validation: Rule => Rule.required(),
+      },
+      {
+        name: 'musicGenre',
+        title: 'Music Genre',
+        type: 'string',
+        options: {
+          list: [
+            { value: 'edm', title: 'EDM' },
+            { value: 'house', title: 'House' },
+            { value: 'hip-hop', title: 'Hip Hop' },
+            { value: 'electronic', title: 'Electronic' },
+            { value: 'dubstep', title: 'Dubstep' },
+            { value: 'latin', title: 'Latin' },
+            { value: 'other', title: 'Other' },
+          ],
+        },
+      },
+      {
+        name: 'profilePicture',
+        title: 'Profile Picture',
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
+      },
+    ],
+  }
+
+event.js
+  export default {
+    name: 'event',
+    title: 'Event',
+    type: 'document',
+    fields: [
+      {
+        name: 'name',
+        title: 'Name',
+        type: 'string',
+      },
+      {
+        name: 'date',
+        title: 'Date',
+        type: 'datetime',
+      },
+      {
+        name: 'artist',
+        title: 'Artist',
+        type: 'reference',
+        to: [{ type: 'artist' }],
+      },
+      {
+        name: 'venue',
+        title: 'Venue',
+        type: 'reference',
+        to: [{ type: 'venue' }],
+      },
+      {
+        name: 'rules',
+        title: 'Rules',
+        type: 'array',
+        of: [
+          {
+            type: 'string',
+          },
+        ],
+      },
+    ],
+  };
+
+
+index.js
+import guest from './guest';
+import group from './group';
+import venue from './venue';
+import event from './event';
+import ticket from './ticket';
+import artist from './artist';
+
+export const schemaTypes = [
+
+    guest,
+    group,
+    venue,
+    event,
+    ticket,
+    artist,
+]
+
+guest.js
+export default {
+    name: 'guest',
+    title: 'Guest',
+    type: 'document',
+    fields: [
+      {
+        name: 'fullName',
+        title: 'Full Name',
+        type: 'string',
+      },
+      {
+        name: 'phoneNumber',
+        title: 'Phone Number',
+        type: 'string',
+      },
+      {
+        name: 'group',
+        title: 'Group',
+        type: 'reference',
+        to: [{ type: 'group' }],
+      },
+    ],
+  };
+
+group.js
+export default {
+    name: 'group',
+    title: 'Group',
+    type: 'document',
+    fields: [
+      {
+        name: 'groupName',
+        title: 'Name of Group',
+        type: 'string',
+      },
+      {
+        name: 'numMales',
+        title: 'Number of Males',
+        type: 'number',
+      },
+      {
+        name: 'numFemales',
+        title: 'Number of Females',
+        type: 'number',
+      },
+      {
+        name: 'hotel',
+        title: 'Hotel',
+        type: 'string',
+      },
+      {
+        name: 'groupMembers',
+        title: 'Group Members',
+        type: 'array',
+        of: [{ type: 'reference', to: [{ type: 'guest' }] }],
+      },
+  
+    ],
+  };
+
+ticket.js
+  export default {
+    name: 'ticket',
+    title: 'Ticket',
+    type: 'document',
+    fields: [
+      {
+        name: 'guest',
+        title: 'Guest',
+        type: 'reference',
+        to: [{ type: 'guest' }],
+      },
+      {
+        name: 'event',
+        title: 'Event',
+        type: 'reference',
+        to: [{ type: 'event' }],
+      },
+    ],
+  };
+
+venue.js
+export default {
+    name: 'venue',
+    title: 'Venue',
+    type: 'document',
+    fields: [
+      {
+        name: 'name',
+        title: 'Name',
+        type: 'string',
+      },
+      {
+        name: 'events',
+        title: 'Events',
+        type: 'array',
+        of: [{ type: 'reference', to: [{ type: 'event' }] }],
+      },
+    ],
+  };

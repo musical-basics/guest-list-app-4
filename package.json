@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "lionels-guestlist-4",
   "private": true,
   "version": "1.0.0",
@@ -10,7 +9,8 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy"
+    "deploy-graphql": "sanity graphql deploy",
+    "build": "webpack"
   },
   "keywords": [
     "sanity"
@@ -22,7 +22,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanity": "^3.40.0",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^4.0.0",

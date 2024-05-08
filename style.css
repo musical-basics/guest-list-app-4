@@ -1,0 +1,166 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container.table-container {
+    max-width: 1100px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox-group label {
+    margin-right: 10px;
+}
+
+.dropdown-group {
+    display: flex;
+}
+
+.dropdown-group select {
+    flex: 1;
+    margin-right: 10px;
+}
+.button-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+
+
+.button.secondary {
+    background-color: #ccc;
+    color: #333;
+}
+
+.button.secondary:hover {
+    background-color: #bbb;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+button[type="exportButton"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button[type="exportButton"]:hover {
+    background-color: #45a049;
+}
+
+
+#otherHotel {
+    margin-top: 5px;
+}
+
+/* ... existing styles ... */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+@media (max-width: 600px) {
+    /* CSS rules for screens with a maximum width of 600px */
+    body {
+      font-size: 14px;
+    }
+    .container {
+      padding: 10px;
+    }
+    /* Add more mobile-specific styles */
+  }

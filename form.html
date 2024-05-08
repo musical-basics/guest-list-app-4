@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lionel's Guest List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+    
+            input[type="text"],
+            input[type="date"],
+            select {
+                font-size: 16px;
+                padding: 12px;
+            }
+    
+            button[type="submit"], .button.secondary {
+                font-size: 18px;
+                padding: 12px;
+                background-color: #ccc; /* example background */
+                color: #333; /* text color */
+            }
+    
+            .button.secondary:hover {
+                background-color: #bbb;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lionel's Guest List</h1>
+        <form id="guestListForm">
+            <div class="form-group">
+                <label for="firstName">First Person Full Name:</label>
+                <input type="text" id="firstName" name="firstName">
+            </div>
+            <div class="form-group">
+                <label for="secondName">Second Person Full Name:</label>
+                <input type="text" id="secondName" name="secondName">
+            </div>
+            <div class="form-group">
+                <label>Number of People in Party:</label>
+                <div class="dropdown-group">
+                    <select id="maleCount" name="maleCount">
+                        <option value="0">0 Male</option>
+                        <option value="1">1 Male</option>
+                        <option value="2">2 Males</option>
+                        <option value="3">3 Males</option>
+                        <option value="4">4 Males</option>
+                        <option value="5">5 Males</option>
+                        <option value="6">6 Males</option>
+                        <option value="7">7 Males</option>
+                        <option value="8">8 Males</option>
+                        <option value="9">9 Males</option>
+                        <option value="10">10 Males</option>
+                    </select>
+                    <select id="femaleCount" name="femaleCount">
+                        <option value="0">0 Female</option>
+                        <option value="1">1 Female</option>
+                        <option value="2">2 Females</option>
+                        <option value="3">3 Females</option>
+                        <option value="4">4 Females</option>
+                        <option value="5">5 Females</option>
+                        <option value="6">6 Females</option>
+                        <option value="7">7 Females</option>
+                        <option value="8">8 Females</option>
+                        <option value="9">9 Females</option>
+                        <option value="10">10 Females</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone1">Phone Number 1:</label>
+                <input type="text" id="phone1" name="phone1">
+            </div>
+            <div class="form-group">
+                <label for="phone2">Phone Number 2:</label>
+                <input type="text" id="phone2" name="phone2">
+            </div>
+            <div class="form-group">
+                <label>Nightclubs TONIGHT:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="tonightClubs" value="Marquee"> Marquee</label>
+                    <label><input type="checkbox" name="tonightClubs" value="Omnia"> Omnia</label>
+                    <label><input type="checkbox" name="tonightClubs" value="Hakkasan"> Hakkasan</label>
+                    <label><input type="checkbox" name="tonightClubs" value="Jewel"> Jewel</label>
+                    <label><input type="checkbox" name="tonightClubs" value="Tao"> Tao</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Poolclubs TOMORROW:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="tomorrowPools" value="Wet Republic"> Wet Republic</label>
+                    <label><input type="checkbox" name="tomorrowPools" value="Tao Beach"> Tao Beach</label>
+                    <label><input type="checkbox" name="tomorrowPools" value="Marquee Dayclub"> Marquee Dayclub</label>
+                    <label><input type="checkbox" name="tomorrowPools" value="Liquid"> Liquid</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Nightclubs TOMORROW NIGHT:</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="tomorrowNightClubs" value="Marquee"> Marquee</label>
+                    <label><input type="checkbox" name="tomorrowNightClubs" value="Omnia"> Omnia</label>
+                    <label><input type="checkbox" name="tomorrowNightClubs" value="Hakkasan"> Hakkasan</label>
+                    <label><input type="checkbox" name="tomorrowNightClubs" value="Jewel"> Jewel</label>
+                    <label><input type="checkbox" name="tomorrowNightClubs" value="Tao"> Tao</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="hotel">Which hotel staying at:</label>
+                <select id="hotel" name="hotel">
+                    <option value="">Select a hotel</option>
+                    <option value="Cosmopolitan">Cosmopolitan</option>
+                    <option value="MGM Grand">MGM Grand</option>
+                    <option value="Aria">Aria</option>
+                    <option value="Caesars">Caesars</option>
+                    <option value="Venetian">Venetian</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" id="otherHotel" name="otherHotel" placeholder="Enter hotel name">
+            </div>
+            <div class="form-group">
+                <label for="dateLeaving">Date Leaving Vegas:</label>
+                <input type="date" id="dateLeaving" name="dateLeaving">
+            </div>
+            <div class="button-group">
+                <button type="submit">Submit</button>
+                <a href="index.html" class="button secondary">Back to Homepage</a>
+            </div>
+        </form>
+        <!-- <a href="index.html">Back to Homepage</a> -->
+    </div>
+
+    <script src="https://unpkg.com/@sanity/client/dist/sanity-client.umd.js"></script>
+    <script type="module" src="form.js"></script>
+    <script type="module" src="dist/bundle.js"></script>
+</body>
+
+</html>
