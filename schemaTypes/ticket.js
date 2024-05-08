@@ -4,6 +4,12 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'guest',
       title: 'Guest',
       type: 'reference',

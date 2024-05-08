@@ -7,11 +7,11 @@ import { createClient } from '@sanity/client';
 // Initialize Sanity client
 
 const client = createClient({
-  projectId: '6whyi5be',
-  dataset: 'production',
-  apiVersion: '2022-03-25',
-  token: 'sk81cxFVog9K5Sd3i8iDLG8WhQjMsRxzbAIB6r3j5qgVjuuOaYkVrQBALHRW3Izh61q4yhAzEcDFSc24iAzQX9ihsCxsPA7ALVlNsTCHOTjr2aVFgdZI41jUsJou4J83J44qYCyqellJPNHP732AyDmZ3yVQ0UH4Sp4VBTJjDXxj61jix9uJ',
-  useCdn: false,
+    projectId: '6whyi5be',
+    dataset: 'production',
+    apiVersion: '2022-03-25',
+    token: 'sk81cxFVog9K5Sd3i8iDLG8WhQjMsRxzbAIB6r3j5qgVjuuOaYkVrQBALHRW3Izh61q4yhAzEcDFSc24iAzQX9ihsCxsPA7ALVlNsTCHOTjr2aVFgdZI41jUsJou4J83J44qYCyqellJPNHP732AyDmZ3yVQ0UH4Sp4VBTJjDXxj61jix9uJ',
+    useCdn: false,
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -105,16 +105,30 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to create a ticket document
     async function createTicket(guestId, eventName) {
         console.log("form.js: Creating ticket for guest ID:", guestId, "and event:", eventName);
-
         const eventQuery = `*[_type == "event" && name match "${eventName}*"][0]`;
         const event = await client.fetch(eventQuery);
-
+        console.log("form.js: Event document:", event);
+    
         if (event) {
-            await client.create({
-                _type: 'ticket',
-                guest: { _type: 'reference', _ref: guestId },
-                event: { _type: 'reference', _ref: event._id },
-            });
+            console.log("form.js: Guest ID:", guestId);
+            console.log("form.js: Event ID:", event._id);
+    
+            // Fetch the guest document based on the guestId
+            const guestQuery = `*[_type == "guest" && _id == "${guestId}"][0]`;
+            const guest = await client.fetch(guestQuery);
+    
+            if (guest) {
+                const ticketTitle = `Ticket for ${guest.fullName} - ${event.name}`;
+    
+                await client.create({
+                    _type: 'ticket',
+                    title: ticketTitle,
+                    guest: { _type: 'reference', _ref: guestId },
+                    event: { _type: 'reference', _ref: event._id },
+                });
+            } else {
+                console.error("form.js: Guest document not found for ID:", guestId);
+            }
         }
     }
 });

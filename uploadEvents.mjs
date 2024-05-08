@@ -129,6 +129,6 @@ function formatDate(date) {
 }
 
 // Usage example
-const filePath = 'Guestlist Rules w-e 5-8-24.docx';
-const startDate = new Date('2024-05-02'); // Thursday, May 2, 2024
+const filePath = 'Guestlist Rules w-e 5-15-24.docx';
+const startDate = new Date('2024-05-09'); // Thursday, May 2, 2024
 createEventsFromDocument(filePath, startDate);
